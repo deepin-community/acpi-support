@@ -1,0 +1,10 @@
+[Unit]
+Description=ACPI support daemon
+ConditionACPower=false
+
+[Service]
+Type=simple
+ExecStart=/etc/acpi/power.sh true
+
+[Install]
+WantedBy=multi-user.target

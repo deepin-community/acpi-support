@@ -1,0 +1,9 @@
+[Unit]
+Description=ACPI fakekey daemon FIFO
+
+[Socket]
+ListenFIFO=/run/acpi_fakekey
+SocketMode=0200
+
+[Install]
+WantedBy=sockets.target

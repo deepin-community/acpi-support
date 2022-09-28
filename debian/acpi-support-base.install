@@ -1,0 +1,5 @@
+debian/addons/scripts/powerbtn-acpi-support.sh	/etc/acpi
+debian/addons/events/powerbtn-acpi-support	/etc/acpi/events
+
+debian/addons/lib/policy-funcs			/usr/share/acpi-support
+debian/addons/lib/power-funcs			/usr/share/acpi-support

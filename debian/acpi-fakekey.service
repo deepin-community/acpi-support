@@ -1,0 +1,12 @@
+[Unit]
+Description=ACPI fakekey daemon
+Requires=acpi-fakekey.socket
+Documentation=man:acpi_fakekey(8)
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/acpi_fakekeyd -f
+
+[Install]
+Also=acpi-fakekey.socket
+WantedBy=multi-user.target

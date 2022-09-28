@@ -1,0 +1,50 @@
+asus-keyboard-backlight.sh			/etc/acpi
+asus-wireless.sh				/etc/acpi
+ibm-wireless.sh					/etc/acpi
+tosh-wireless.sh				/etc/acpi
+undock.sh					/etc/acpi
+
+debian/addons/scripts/always-mute.sh		/etc/acpi
+debian/addons/scripts/ejectbtn.sh		/etc/acpi
+debian/addons/scripts/lid.sh			/etc/acpi
+debian/addons/scripts/mutebtn.sh		/etc/acpi
+debian/addons/scripts/power.sh			/etc/acpi
+debian/addons/scripts/sleep_suspend.sh		/etc/acpi
+debian/addons/scripts/sleep_suspendbtn.sh	/etc/acpi
+debian/addons/scripts/sonybright.sh		/etc/acpi
+debian/addons/scripts/voldownbtn.sh		/etc/acpi
+debian/addons/scripts/volupbtn.sh		/etc/acpi
+
+events/asus-keyboard-backlight-down		/etc/acpi/events
+events/asus-keyboard-backlight-up		/etc/acpi/events
+events/asus-wireless-off			/etc/acpi/events
+events/asus-wireless-on				/etc/acpi/events
+events/ibm-wireless				/etc/acpi/events
+events/lenovo-undock				/etc/acpi/events
+events/thinkpad-cmos				/etc/acpi/events
+events/tosh-wireless				/etc/acpi/events
+
+debian/addons/events/ac			  	/etc/acpi/events
+debian/addons/events/asus-media-eject	  	/etc/acpi/events
+debian/addons/events/asus-wireless-wlan  	/etc/acpi/events
+debian/addons/events/battery			/etc/acpi/events
+debian/addons/events/lidbtn			/etc/acpi/events
+debian/addons/events/sleepbtn			/etc/acpi/events
+debian/addons/events/sony-brightness-down	/etc/acpi/events
+debian/addons/events/sony-brightness-up		/etc/acpi/events
+debian/addons/events/sony-eject			/etc/acpi/events
+debian/addons/events/sony-mute			/etc/acpi/events
+debian/addons/events/sony-sleep			/etc/acpi/events
+debian/addons/events/sony-volume-down		/etc/acpi/events
+debian/addons/events/sony-volume-up		/etc/acpi/events
+debian/addons/events/suspendbtn			/etc/acpi/events
+debian/addons/events/thinkpad-mute		/etc/acpi/events
+debian/addons/events/thinkpad-volume-down	/etc/acpi/events
+debian/addons/events/thinkpad-volume-up		/etc/acpi/events
+debian/addons/events/thinkpad-wireless-wlan  	/etc/acpi/events
+
+key-constants					/usr/share/acpi-support
+lib/state-funcs					/usr/share/acpi-support
+debian/addons/lib/screenblank			/usr/share/acpi-support
+
+debian/lintian/acpi-support			/usr/share/lintian/overrides

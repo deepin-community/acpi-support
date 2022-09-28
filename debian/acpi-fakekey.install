@@ -1,0 +1,2 @@
+debian/addons/fakekey/acpi_fakekey		/usr/bin
+debian/addons/fakekey/acpi_fakekeyd		/usr/sbin

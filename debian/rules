@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+ifeq ($(DEB_HOST_ARCH),i386)
+arch-depends := -V'arch:Suggests=toshset'
+endif
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+ifeq (linux,$(DEB_HOST_ARCH_OS))
+	CONFIGURE_EXTRA_FLAGS += --with-systemdsystemunitdir=/lib/systemd/system
+else
+	CONFIGURE_EXTRA_FLAGS += --with-systemdsystemunitdir=no
+endif
+
+%:
+	dh ${@}
+
+override_dh_auto_build:
+	dh_auto_build --sourcedirectory=debian/addons/fakekey -- all
+
+override_dh_auto_clean:
+	dh_auto_clean
+
+	make -C debian/addons/fakekey clean
+
+override_dh_install:
+	dh_install
+
+	[ ! -d debian/acpi-support ] || find debian/acpi-support/etc/acpi -name "*.sh" -exec chmod a+x {} \;
+	[ ! -d debian/acpi-support ] || chmod a-x debian/acpi-support/usr/share/acpi-support/state-funcs
+	[ ! -d debian/acpi-support-base ] || find debian/acpi-support-base/etc/acpi -name "*.sh" -exec chmod a+x {} \;
+
+override_dh_installinit:
+	dh_installinit -pacpi-support --no-start
+	dh_installinit -pacpi-fakekey --no-start
+
+# Keep this manually generated so that it doesn't build-dep on
+# 'linux-headers' and stays predictable.
+
+key-constants: /usr/include/linux/input.h debian/addons/build/aliased-keys
+	test -f $<
+	echo -n '# Generated from $< dated ' > $@
+	date -r $< >> $@
+	awk '/#define  *KEY_/{if(strtonum($$3) <= 255) print $$2"="strtonum($$3)}' $< | sort -nt'=' -k2 >> $@
+	test -f debian/addons/build/aliased-keys && cat debian/addons/build/aliased-keys >> $@
